@@ -69,17 +69,8 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
                 text: userMessage,
                 cancellationToken: cancellationToken);
             break;
-        case "скучно":
-            userMessage = "скучно только пидорам";
-            await botClient.SendTextMessageAsync(
-                chatId: chatId,
-                text: userMessage,
-                cancellationToken: cancellationToken);
-            break;
         case "погода":
-
             Task<string> res = new Weather(new RestClient("http://api.weatherapi.com/v1")).GetWeather();
-
             userMessage = res.Result + "°C";
             await botClient.SendTextMessageAsync(
                 chatId: chatId,
